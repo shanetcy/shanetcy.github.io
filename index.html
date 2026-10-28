@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane Tay · AI and software developer</title>
+<meta name="description" content="Shane Tay, M.Sc. student in AI for Smart Sensors and Actuators at Deggendorf Institute of Technology (Cham). Builds RAG and local-LLM applications and web apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3F5F8;
+    --ink: #17233A;
+    --muted: #5B6880;
+    --rule: #D5DBE5;
+    --link: #2D5FD0;
+    --marigold: #E3A33B;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #121A2A;
+      --ink: #E7ECF4;
+      --muted: #9AA6BA;
+      --rule: #2A3650;
+      --link: #8DB0FF;
+      --marigold: #F0B65A;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.125rem/1.6 "Schibsted Grotesk", system-ui, sans-serif;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 4.5rem 1.25rem 4rem; }
+  a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+  h1 {
+    font-weight: 800;
+    font-size: clamp(3.25rem, 12vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    margin: 0 0 1.5rem;
+  }
+  .lede { font-size: 1.3rem; line-height: 1.5; max-width: 34em; margin: 0; }
+  .lede + p { color: var(--muted); margin: 0.75rem 0 0; }
+
+  /* The route: Malaysia -> Taiwan -> Cham */
+  .route { list-style: none; padding: 0; margin: 3.5rem 0 4.5rem; display: grid; grid-template-columns: repeat(3, 1fr); position: relative; }
+  .route::before {
+    content: ""; position: absolute; left: 0.45rem; right: calc(33.333% - 0.45rem); top: 0.45rem;
+    height: 2px; background: var(--ink); transform-origin: left; animation: draw 1.1s 0.2s cubic-bezier(.6,.1,.2,1) both;
+  }
+  .route li { position: relative; padding-top: 1.6rem; padding-right: 0.75rem; }
+  .route li::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 0.95rem; height: 0.95rem; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--ink);
+  }
+  .route li:last-child::before { background: var(--marigold); border-color: var(--marigold); }
+  .route strong { display: block; font-weight: 700; }
+  .route span { display: block; color: var(--muted); font-size: 0.95rem; line-height: 1.4; }
+  @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1rem; }
+  section { margin-top: 4rem; }
+
+  .project { border-top: 1px solid var(--rule); padding: 1.4rem 0; }
+  .project:last-child { border-bottom: 1px solid var(--rule); }
+  .project h3 { font-size: 1.2rem; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  .project h3 a { color: var(--ink); text-decoration: none; }
+  .project h3 a:hover { text-decoration: underline; }
+  .project p { margin: 0.35rem 0 0; }
+  .project .stack { color: var(--muted); font-size: 0.95rem; }
+  .project .links { margin-top: 0.5rem; font-size: 0.95rem; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+  dl { margin: 0; display: grid; grid-template-columns: 7rem 1fr; gap: 0.6rem 1.25rem; }
+  dt { font-weight: 700; }
+  dd { margin: 0; }
+
+  footer { margin-top: 4rem; color: var(--muted); font-size: 0.95rem; }
+
+  @media (max-width: 34rem) {
+    main { padding-top: 3rem; }
+    .route { grid-template-columns: 1fr; gap: 1.25rem; }
+    .route::before { left: 0.42rem; right: auto; top: 0.45rem; bottom: 2.2rem; width: 2px; height: auto; transform-origin: top; animation-name: drawY; }
+    .route li { padding: 0 0 0 1.9rem; }
+    .route li::before { z-index: 1; }
+    .route li:last-child::after { content: ""; position: absolute; left: 0; top: 0.5rem; bottom: -2.5rem; width: 1rem; background: var(--paper); }
+    dl { grid-template-columns: 1fr; gap: 0.15rem; }
+    dd { margin-bottom: 0.75rem; }
+  }
+  @keyframes drawY { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) { .route::before { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Shane<br>Tay</h1>
+    <p class="lede">I build AI applications that answer from your own documents, and the web apps around them. Where data is sensitive, I run the language model locally so nothing leaves the machine.</p>
+    <p>Looking for a working-student role, internship or master's thesis in Germany.</p>
+  </header>
+
+  <ol class="route" aria-label="Background">
+    <li><strong>Malaysia</strong><span>Grew up</span></li>
+    <li><strong>Taiwan</strong><span>B.Sc. Computer Science</span></li>
+    <li><strong>Cham, Germany</strong><span>M.Sc. AI for Smart Sensors and Actuators, Deggendorf Institute of Technology</span></li>
+  </ol>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+
+    <article class="project">
+      <h3><a href="https://github.com/shanetcy/taiwan-travel-rag">Taiwan travel assistant</a></h3>
+      <p>A chatbot that answers questions only from the documents you give it and names its sources. Runs on a local model through Ollama or on a hosted one.</p>
+      <p class="stack">Python, LangChain, FAISS, multilingual E5 embeddings, Gradio</p>
+      <div class="links"><a href="https://github.com/shanetcy/taiwan-travel-rag">Code</a></div>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/shanetcy/llm-agent-experiments">LLM agent experiments</a></h3>
+      <p>A travel planner that drafts, gets critiqued by a reviewer model and rewrites its plan, plus a persona chatbot on a local model.</p>
+      <p class="stack">Python, OpenAI-compatible API, Ollama, Gradio</p>
+      <div class="links"><a href="https://github.com/shanetcy/llm-agent-experiments">Code</a></div>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/shanetcy/jizhang">Jizhang expense tracker</a></h3>
+      <p>An offline-first phone app for spending in euros, ringgit and dollars, with a shared household budget that syncs between two phones and settles up each month.</p>
+      <p class="stack">React, TypeScript, Firebase, IndexedDB, PWA</p>
+      <div class="links"><a href="https://shanetcy.github.io/jizhang/">Open the app</a><a href="https://github.com/shanetcy/jizhang">Code</a></div>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/shanetcy/cocoqi">cocoqi brand website</a></h3>
+      <p>A fast, accessible one-page site for a Malaysian coconut-water product, with ordering over WhatsApp.</p>
+      <p class="stack">HTML, CSS, JavaScript</p>
+      <div class="links"><a href="https://github.com/shanetcy/cocoqi">Code</a></div>
+    </article>
+  </section>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">Skills</h2>
+    <dl>
+      <dt>AI and ML</dt><dd>Python, LangChain, retrieval-augmented generation, FAISS, Hugging Face, Ollama, scikit-learn, Keras, pandas</dd>
+      <dt>Web</dt><dd>TypeScript, React, Vite, Firebase, progressive web apps, HTML and CSS</dd>
+      <dt>Other</dt><dd>C++, SQL Server, Git, Linux</dd>
+      <dt>Languages</dt><dd>Chinese, English, German (B1)</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">Contact</h2>
+    <p>The best way to reach me is through <a href="https://github.com/shanetcy">GitHub</a>.</p>
+    <!-- Add your email or LinkedIn here, e.g. <a href="mailto:you@example.com">you@example.com</a> -->
+  </section>
+
+  <footer>Based in Cham, Bavaria.</footer>
+</main>
+</body>
+</html>
